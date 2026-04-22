@@ -3,694 +3,424 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XDFAA TEAM - Professional Web Designer</title>
+    <title>XDFAA TEAM | Web Design & Code Bureau</title>
     
-    <!-- Google Fonts untuk nuansa Tech/Futuristik -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;600;800&family=Fira+Code:wght@400;500&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
+        /* --- CSS VARIABLES --- */
         :root {
-            --primary-color: #00f3ff; /* Cyan Neon */
-            --secondary-color: #0044ff; /* Deep Blue */
-            --accent-color: #ffffff;
-            --bg-dark: #050505;
-            --bg-panel: #111111;
-            --text-main: #e0e0e0;
-            --success: #00ff88;
-            --danger: #ff3366;
+            --primary: #00f0ff;
+            --secondary: #7000ff;
+            --bg-dark: #05050a;
+            --glass-bg: rgba(20, 20, 35, 0.6);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-main: #ffffff;
+            --text-muted: #a0a0c0;
+            
             --font-head: 'Orbitron', sans-serif;
-            --font-body: 'Rajdhani', sans-serif;
+            --font-body: 'Exo 2', sans-serif;
+            --font-code: 'Fira Code', monospace;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
             font-family: var(--font-body);
-            line-height: 1.6;
             overflow-x: hidden;
-        }
-
-        /* Scrollbar Kustom */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--secondary-color);
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-color);
-        }
-
-        /* Utility Classes */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: transparent;
-            color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            font-family: var(--font-head);
-            font-weight: 700;
-            text-transform: uppercase;
-            text-decoration: none;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            font-size: 0.9rem;
-        }
-
-        .btn:hover {
-            background: var(--primary-color);
-            color: #000;
-            box-shadow: 0 0 20px var(--primary-color);
-        }
-
-        .btn-instagram {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            border: none;
-            color: white;
-            box-shadow: 0 0 10px rgba(220, 39, 67, 0.5);
-        }
-        
-        .btn-instagram:hover {
-            box-shadow: 0 0 25px rgba(220, 39, 67, 0.8);
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Header & Nav */
-        header {
-            background: rgba(5, 5, 5, 0.9);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .logo-img {
-            width: 60px;
-            height: 60px;
-            object-fit: contain;
-            /* Efek glow pada logo */
-            filter: drop-shadow(0 0 8px var(--primary-color));
-            border-radius: 50%; /* Opsional, sesuaikan bentuk logo asli */
-        }
-
-        .brand-name {
-            font-family: var(--font-head);
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-            text-shadow: 0 0 8px var(--primary-color);
-        }
-
-        /* Hero Section */
-        #hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 70%);
-            position: relative;
-            padding-top: 80px;
-        }
-
-        /* Grid background effect */
-        #hero::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
             background-image: 
-                linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 0;
-            pointer-events: none;
+                radial-gradient(circle at 10% 20%, rgba(112, 0, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 240, 255, 0.15) 0%, transparent 40%);
         }
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-        }
-
-        .hero-badge {
-            display: inline-block;
-            background: rgba(0, 243, 255, 0.1);
-            border: 1px solid var(--primary-color);
-            padding: 5px 15px;
-            border-radius: 20px;
-            color: var(--primary-color);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .hero-title {
-            font-family: var(--font-head);
-            font-size: 4rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            background: linear-gradient(to right, #fff, var(--primary-color));
+        /* --- UTILITIES --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; }
+        .section-padding { padding: 100px 0; }
+        .text-center { text-align: center; }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #fff, var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 40px;
-            color: #aaa;
-        }
-
-        /* Sections General */
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            font-family: var(--font-head);
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 60px;
-            color: var(--accent-color);
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: var(--primary-color);
-            margin: 15px auto 0;
-            box-shadow: 0 0 10px var(--primary-color);
-        }
-
-        /* About & Features */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background: var(--bg-panel);
-            border: 1px solid #333;
+        /* --- GLASSMORPHISM CARDS --- */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
             padding: 30px;
-            border-radius: 4px;
-            transition: 0.3s;
-            position: relative;
-            overflow: hidden;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
         }
 
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--primary-color);
-            opacity: 0;
-            transition: 0.3s;
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 14px 35px;
+            font-family: var(--font-head); font-weight: 700; text-transform: uppercase;
+            color: var(--primary); background: transparent; border: 2px solid var(--primary);
+            text-decoration: none; transition: 0.3s; cursor: pointer;
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
+        }
+        .btn:hover { background: var(--primary); color: #000; box-shadow: 0 0 25px var(--primary); }
+        .btn-filled { background: var(--primary); color: #000; }
+        .btn-filled:hover { background: #fff; box-shadow: 0 0 25px #fff; }
+
+        /* --- PRELOADER --- */
+        #preloader {
+            position: fixed; width: 100%; height: 100%; background: #000; z-index: 10000;
+            display: flex; justify-content: center; align-items: center; flex-direction: column;
+        }
+        .code-loader { font-family: var(--font-code); color: var(--primary); font-size: 1.2rem; }
+        
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: rgba(5, 5, 10, 0.85); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05); padding: 15px 0;
+        }
+        .nav-flex { display: flex; justify-content: space-between; align-items: center; }
+        
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand img { width: 45px; height: 45px; border-radius: 50%; border: 2px solid var(--primary); }
+        .brand-text { font-family: var(--font-head); font-weight: 900; font-size: 1.4rem; color: #fff; }
+        
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: var(--text-main); text-decoration: none; font-weight: 600; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; }
+        .hamburger span { width: 30px; height: 3px; background: #fff; }
+
+        @media(max-width: 768px) {
+            .nav-links { position: absolute; top: 100%; left: 0; width: 100%; background: var(--bg-dark); flex-direction: column; padding: 30px; transform: translateY(-150%); transition: 0.4s; text-align: center; }
+            .nav-links.active { transform: translateY(0); }
+            .hamburger { display: flex; }
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-color);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        /* --- HERO --- */
+        #hero { height: 100vh; display: flex; align-items: center; padding-top: 80px; }
+        .hero-content { max-width: 800px; }
+        .badge { 
+            background: rgba(0, 240, 255, 0.1); border: 1px solid var(--primary); padding: 8px 20px; 
+            display: inline-block; font-family: var(--font-code); font-size: 0.9rem; color: var(--primary); margin-bottom: 20px; 
+        }
+        .hero-title { font-family: var(--font-head); font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
+        .hero-desc { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 30px; max-width: 600px; }
+
+        /* --- SERVICES --- */
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .service-card { transition: 0.3s; }
+        .service-card:hover { transform: translateY(-5px); border-color: var(--primary); }
+        .s-icon { font-size: 2rem; color: var(--secondary); margin-bottom: 20px; }
+        
+        /* --- CODE SHOWCASE --- */
+        .code-window {
+            background: #1e1e1e; border-radius: 8px; overflow: hidden;
+            border: 1px solid #333; font-family: var(--font-code); text-align: left;
+        }
+        .window-header { background: #252526; padding: 10px 20px; display: flex; gap: 8px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+        .code-content { padding: 20px; font-size: 0.9rem; color: #d4d4d4; overflow-x: auto; }
+        .c-purple { color: #c586c0; }
+        .c-blue { color: #569cd6; }
+        .c-yellow { color: #dcdcaa; }
+        .c-green { color: #6a9955; }
+
+        /* --- PRICING CALCULATOR --- */
+        .calc-container {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;
+        }
+        .calc-form label {
+            display: flex; align-items: center; gap: 15px;
+            background: rgba(255,255,255,0.05); padding: 15px; margin-bottom: 15px;
+            border-radius: 8px; cursor: pointer; transition: 0.2s;
+        }
+        .calc-form label:hover { background: rgba(255,255,255,0.1); }
+        .calc-form input[type="checkbox"] {
+            width: 20px; height: 20px; accent-color: var(--primary);
+        }
+        .price-display {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.3));
+            border: 2px solid var(--primary); border-radius: 16px;
+            padding: 40px; text-align: center; position: relative; overflow: hidden;
+        }
+        .price-display::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(transparent, var(--primary), transparent 30%);
+            animation: rotateBorder 4s linear infinite; z-index: -1;
+        }
+        .total-price { font-size: 3.5rem; font-family: var(--font-head); color: #fff; margin: 10px 0; }
+        .price-note { font-size: 0.9rem; color: var(--text-muted); margin-top: 20px; line-height: 1.6; }
+        .discount-alert {
+            background: var(--secondary); color: #fff; padding: 5px 10px;
+            font-size: 0.8rem; border-radius: 4px; display: inline-block; margin-bottom: 10px;
         }
 
-        .feature-card:hover::before {
-            opacity: 1;
-        }
+        @media(max-width: 768px) { .calc-container { grid-template-columns: 1fr; } }
 
-        .feature-icon {
-            font-size: 2rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
+        /* --- FAQ --- */
+        .faq-item {
+            border-bottom: 1px solid rgba(255,255,255,0.1); margin-bottom: 10px;
         }
-
-        .feature-title {
-            font-family: var(--font-head);
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--accent-color);
+        .faq-question {
+            padding: 20px; cursor: pointer; display: flex; justify-content: space-between;
+            font-weight: bold; font-family: var(--font-head);
         }
-
-        /* Pricing Section */
-        .pricing-container {
-            display: flex;
-            justify-content: center;
+        .faq-answer {
+            max-height: 0; overflow: hidden; padding: 0 20px; color: var(--text-muted);
+            transition: 0.3s; font-size: 0.95rem;
         }
+        .faq-item.active .faq-answer { max-height: 200px; padding-bottom: 20px; }
+        .faq-item.active .faq-question { color: var(--primary); }
 
-        .price-card {
-            background: var(--bg-panel);
-            border: 2px solid #333;
-            padding: 50px;
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
-            position: relative;
-        }
+        /* --- FOOTER --- */
+        footer { background: #020205; padding: 60px 0 20px; border-top: 1px solid #1a1a1a; margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { color: #fff; font-family: var(--font-head); margin-bottom: 20px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: var(--text-muted); text-decoration: none; transition: 0.3s; }
+        .footer-col ul li a:hover { color: var(--primary); }
 
-        .discount-badge {
-            position: absolute;
-            top: -15px;
-            right: -15px;
-            background: var(--danger);
-            color: white;
-            padding: 10px 20px;
-            font-family: var(--font-head);
-            font-weight: bold;
-            font-size: 0.9rem;
-            transform: rotate(15deg);
-            box-shadow: 0 0 15px rgba(255, 51, 102, 0.6);
-            z-index: 2;
-        }
-
-        .price-amount {
-            font-family: var(--font-head);
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin: 20px 0;
-            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
-        }
-
-        .price-amount span {
-            font-size: 1rem;
-            color: #888;
-        }
-
-        .price-desc {
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-
-        .price-note {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 30px;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-        }
-
-        /* Reviews & Comments */
-        .review-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-        }
-
-        @media (max-width: 768px) {
-            .review-layout {
-                grid-template-columns: 1fr;
-            }
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            .nav-links {
-                display: none; /* Mobile menu simplified for this showcase */
-            }
-        }
-
-        /* Rating Input */
-        .rating-input-area {
-            background: var(--bg-panel);
-            padding: 30px;
-            border: 1px solid #333;
-            border-radius: 8px;
-        }
-
-        .stars {
-            display: flex;
-            flex-direction: row-reverse; /* Untuk logic hover CSS yang mudah */
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .stars input {
-            display: none;
-        }
-
-        .stars label {
-            font-size: 2rem;
-            color: #444;
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-
-        /* Logic Visualisasi Bintang */
-        .stars input:checked ~ label,
-        .stars label:hover,
-        .stars label:hover ~ label {
-            color: var(--primary-color);
-            text-shadow: 0 0 10px var(--primary-color);
-        }
-
-        textarea {
-            width: 100%;
-            height: 100px;
-            background: #050505;
-            border: 1px solid #333;
-            color: #fff;
-            padding: 15px;
-            margin-bottom: 20px;
-            resize: none;
-            font-family: var(--font-body);
-            font-size: 1rem;
-        }
-
-        textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        #comment-form button {
-            width: 100%;
-        }
-
-        #comment-form button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-            border-color: #555;
-            color: #555;
-            box-shadow: none;
-        }
-
-        /* Comment List */
-        .comment-list-container {
-            max-height: 500px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-
-        .comment-item {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 3px solid var(--primary-color);
-            position: relative;
-        }
-
-        .comment-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 5px;
-        }
-
-        .comment-author {
-            font-weight: bold;
-            color: var(--primary-color);
-            font-family: var(--font-head);
-            font-size: 0.9rem;
-        }
-
-        .comment-rating {
-            color: gold;
-            font-size: 0.8rem;
-        }
-
-        .comment-text {
-            color: #ccc;
-            font-size: 0.95rem;
-        }
-
-        .delete-btn {
-            background: none;
-            border: none;
-            color: var(--danger);
-            cursor: pointer;
-            font-size: 0.8rem;
-            opacity: 0;
-            transition: opacity 0.3s;
-            margin-top: 5px;
-            display: block;
-            text-align: right;
-        }
-
-        .comment-item:hover .delete-btn {
-            opacity: 1;
-        }
-
-        /* Footer */
-        footer {
-            background: #000;
-            padding: 50px 0;
-            text-align: center;
-            border-top: 1px solid #222;
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 20px;
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s;
-        }
-
-        .social-link:hover {
-            color: var(--primary-color);
-        }
-
-        /* Toast Notification */
-        #toast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 4px;
-            padding: 16px;
-            position: fixed;
-            z-index: 1001;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-left: 5px solid var(--primary-color);
-            font-family: var(--font-head);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        }
-
-        #toast.show {
-            visibility: visible;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
-        }
-
-        @keyframes fadein {
-            from {bottom: 0; opacity: 0;}
-            to {bottom: 30px; opacity: 1;}
-        }
-
-        @keyframes fadeout {
-            from {bottom: 30px; opacity: 1;}
-            to {bottom: 0; opacity: 0;}
-        }
-
+        @keyframes rotateBorder { 100% { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo-container">
-                    <!-- Gambar Logo sesuai request -->
-                    <img src="https://z-cdn-media.chatglm.cn/files/d7d5e61e-19d5-49c7-af3f-cca3fd06043a.jpeg?auth_key=1876780341-596f9b2de70a416bab4f60df58726436-0-59bad741ca0486bde997e1295bf79e52" alt="XDFAA Logo" class="logo-img">
-                    <span class="brand-name">XDFAA TEAM</span>
-                </div>
-                <div class="nav-links">
-                    <a href="#about">Tentang</a>
-                    <a href="#services">Fitur</a>
-                    <a href="#pricing">Harga</a>
-                    <a href="#reviews">Komentar</a>
-                </div>
-                <a href="https://www.instagram.com/xdfaa_team.id?igsh=YmN2bXFraHF5YjM1" target="_blank" class="btn btn-instagram">
-                    Hubungi Kami
-                </a>
-            </nav>
-        </div>
-    </header>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="code-loader">Loading Resources...</div>
+        <div style="font-family: monospace; color: #666; margin-top: 10px;">> compiling assets...</div>
+    </div>
 
-    <!-- Hero Section -->
-    <section id="hero">
-        <div class="container hero-content">
-            <div class="hero-badge">Sci-Fi Web Designer</div>
-            <h1 class="hero-title">Desain Website Masa Depan</h1>
-            <p class="hero-subtitle">Kami menciptakan pengalaman digital dengan sentuhan estetika gaming, armor, dan teknologi tinggi.</p>
-            <a href="https://www.instagram.com/xdfaa_team.id?igsh=YmN2bXFraHF5YjM1" target="_blank" class="btn">Pesan Sekarang</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-flex">
+            <a href="#" class="brand">
+                <img src="https://z-cdn-media.chatglm.cn/files/d7d5e61e-19d5-49c7-af3f-cca3fd06043a.jpeg?auth_key=1876780341-596f9b2de70a416bab4f60df58726436-0-59bad741ca0486bde997e1295bf79e52" alt="Logo">
+                <div class="brand-text">XDFAA TEAM</div>
+            </a>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" onclick="toggleMenu()">Home</a></li>
+                <li><a href="#services" onclick="toggleMenu()">Layanan</a></li>
+                <li><a href="#portfolio" onclick="toggleMenu()">Portfolio</a></li>
+                <li><a href="#pricing" onclick="toggleMenu()">Harga</a></li>
+                <li><a href="https://www.instagram.com/xdfaa_team.id?igsh=YmN2bXFraHF5YjM1" target="_blank" class="btn" style="padding: 8px 20px;">Pesan</a></li>
+            </ul>
         </div>
-    </section>
+    </nav>
 
-    <!-- About & Services -->
-    <section id="about">
+    <!-- Hero -->
+    <section id="home">
         <div class="container">
-            <h2 class="section-title">Tentang & Fitur</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3 class="feature-title">Desain Cepat & Responsif</h3>
-                    <p>Website yang dibuat cepat dimuat dan dapat diakses di semua perangkat (HP, Tablet, PC) dengan tampilan yang konsisten.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3 class="feature-title">Tema Sci-Fi / Cyberpunk</h3>
-                    <p>Spesialisasi kami pada desain futuristik, efek neon, layout mekanikal, dan nuansa armor yang cocok untuk tim gaming atau portfolio.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <h3 class="feature-title">Kustomisasi Penuh</h3>
-                    <p>Warna, layout, dan fitur disesuaikan sepenuhnya dengan branding Anda. Tidak ada template pasaran.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💎</div>
-                    <h3 class="feature-title">High Quality Assets</h3>
-                    <p>Penggunaan font premium, ikon vektor, dan struktur kode yang bersih (Clean Code).</p>
+            <div class="hero-content">
+                <div class="badge">SOURCE CODE DESIGNER</div>
+                <h1 class="hero-title">Jasa Desain Web & <br><span class="gradient-text">Pengembangan Kode</span></h1>
+                <p class="hero-desc">
+                    Kami tidak hanya menyediakan tampilan, kami memberikan <strong>Source Code</strong> berkualitas tinggi yang bersih, cepat, dan siap pakai. Anda memiliki kontrol penuh atas file Anda.
+                </p>
+                <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+                    <a href="#pricing" class="btn btn-filled">Hitung Harga</a>
+                    <a href="#portfolio" class="btn">Lihat Portfolio</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing -->
-    <section id="pricing">
+    <!-- Services -->
+    <section id="services" class="section-padding">
         <div class="container">
-            <h2 class="section-title">Harga Spesial</h2>
-            <div class="pricing-container">
-                <div class="price-card">
-                    <div class="discount-badge">NEW MEMBER DISKON 50%</div>
-                    <h3>Jasa Pembuatan Website</h3>
-                    <div class="price-amount">Rp 150.000<span>/mulai</span></div>
-                    <p class="price-desc">Harga tergantung tingkat kesulitan desain dan jumlah fitur yang diminta.</p>
-                    
-                    <ul style="list-style: none; text-align: left; margin-bottom: 30px; color: #ccc;">
-                        <li style="margin-bottom: 10px;">✓ Desain Unik (Bukan Template)</li>
-                        <li style="margin-bottom: 10px;">✓ Responsive Mobile Friendly</li>
-                        <li style="margin-bottom: 10px;">✓ Revisi Sesuai Kesepakatan</li>
-                        <li style="margin-bottom: 10px;">✓ Gratis Konsultasi via DM</li>
-                    </ul>
+            <div class="text-center" style="margin-bottom: 60px;">
+                <h2 style="font-family: var(--font-head); font-size: 2.5rem;">Apa yang Anda Dapatkan?</h2>
+                <p style="color: var(--text-muted);">Fokus kami adalah kualitas kode dan desain visual.</p>
+            </div>
+            <div class="service-grid">
+                <div class="glass-card service-card">
+                    <div class="s-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3 style="font-family: var(--font-head); margin-bottom: 10px;">UI/UX Design</h3>
+                    <p style="color: var(--text-muted);">Desain antarmuka futuristik dengan estetika neon, cyberpunk, atau clean corporate sesuai permintaan.</p>
+                </div>
+                <div class="glass-card service-card">
+                    <div class="s-icon"><i class="fas fa-code"></i></div>
+                    <h3 style="font-family: var(--font-head); margin-bottom: 10px;">Clean Code (HTML/CSS/JS)</h3>
+                    <p style="color: var(--text-muted);">Kode yang rapi, terstruktur, mudah diedit, dan berkinerja tinggi (Performance Optimized).</p>
+                </div>
+                <div class="glass-card service-card">
+                    <div class="s-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h3 style="font-family: var(--font-head); margin-bottom: 10px;">Responsive Layout</h3>
+                    <p style="color: var(--text-muted);">Tampilan yang menyesuaikan sempurna di HP, Tablet, maupun Laptop.</p>
+                </div>
+                <div class="glass-card service-card">
+                    <div class="s-icon"><i class="fas fa-file-code"></i></div>
+                    <h3 style="font-family: var(--font-head); margin-bottom: 10px;">Source Code Handover</h3>
+                    <p style="color: var(--text-muted);">Anda menerima file lengkap (Project Folder) untuk dimodifikasi atau dipindahkan ke hosting lain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                    <p class="price-note">
-                        *Pelanggan baru otomatis mendapatkan diskon 50% untuk pesanan pertama. Hubungi kami untuk penawaran fix price.
+    <!-- Code Showcase -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="glass-card" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
+                <div>
+                    <h2 style="font-family: var(--font-head); font-size: 2rem; margin-bottom: 20px;">Kualitas Kode Terjamin</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">
+                        Kami menggunakan standar penulisan kode terbaik. Struktur folder yang rapi, komentar kode yang jelas, dan tanpa dependensi yang berat. Ini memudahkan Anda jika ingin belajar atau menyewa developer lain untuk melanjutkannya.
                     </p>
-
-                    <a href="https://www.instagram.com/xdfaa_team.id?igsh=YmN2bXFraHF5YjM1" target="_blank" class="btn btn-instagram" style="width: 100%; text-align: center;">
-                        Tanya Harga via Instagram
-                    </a>
+                    <ul style="list-style: none; color: var(--text-muted); line-height: 2;">
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Semantic HTML5</li>
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Modern CSS3 (Flexbox/Grid)</li>
+                        <li><i class="fas fa-check" style="color: var(--primary);"></i> Vanilla JavaScript (Ringan)</li>
+                    </ul>
+                </div>
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
+                    </div>
+                    <div class="code-content">
+                        <span class="c-green">// Main Structure</span><br>
+                        <span class="c-purple">const</span> app = <span class="c-yellow">document</span>.<span class="c-blue">getElementById</span>(<span class="c-green">'root'</span>);<br><br>
+                        <span class="c-purple">function</span> <span class="c-blue">initApp</span>() {<br>
+                        &nbsp;&nbsp;<span class="c-green">// Load Configuration</span><br>
+                        &nbsp;&nbsp;<span class="c-purple">const</span> config = {<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;theme: <span class="c-green">'cyberpunk'</span>,<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;performance: <span class="c-purple">true</span><br>
+                        &nbsp;&nbsp;};<br><br>
+                        &nbsp;&nbsp;<span class="c-yellow">console</span>.<span class="c-blue">log</span>(<span class="c-green">'System Ready'</span>);<br>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Reviews / Comments -->
-    <section id="reviews">
+    <!-- Pricing Calculator -->
+    <section id="pricing" class="section-padding">
         <div class="container">
-            <h2 class="section-title">Komentar & Rating</h2>
-            <div class="review-layout">
-                
-                <!-- Form Input -->
-                <div class="rating-input-area">
-                    <h3 style="margin-bottom: 20px; font-family: var(--font-head);">Beri Penilaian</h3>
-                    <form id="comment-form">
-                        <!-- Star Rating System -->
-                        <div class="stars">
-                            <!-- Urutan reverse agar CSS bekerja dengan benar -->
-                            <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars">★</label>
-                            <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">★</label>
-                            <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">★</label>
-                            <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">★</label>
-                            <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">★</label>
+            <div class="text-center" style="margin-bottom: 60px;">
+                <h2 style="font-family: var(--font-head); font-size: 2.5rem;">Kalkulator Biaya Desain</h2>
+                <p style="color: var(--text-muted);">Pilih kebutuhan Anda, harga akan muncul otomatis.</p>
+            </div>
+
+            <div class="calc-container">
+                <!-- Options -->
+                <div class="glass-card calc-form">
+                    <h3 style="font-family: var(--font-head); margin-bottom: 20px;">Pilih Fitur:</h3>
+                    
+                    <label>
+                        <input type="checkbox" id="c-landing" value="150000" checked disabled>
+                        <div>
+                            <strong>Paket Dasar (Landing Page)</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">Wajib. Mulai dari Rp 150.000</div>
                         </div>
-                        
-                        <p id="rating-text" style="margin-bottom: 15px; font-size: 0.9rem; color: #666;">*Wajib pilih rating dulu sebelum komen</p>
-                        
-                        <input type="text" id="user-name" placeholder="Nama Anda (Opsional)" style="width: 100%; padding: 10px; margin-bottom: 15px; background: #050505; border: 1px solid #333; color: #fff;">
-                        
-                        <textarea id="comment-text" placeholder="Tulis komentar Anda di sini..."></textarea>
-                        
-                        <button type="submit" id="submit-btn" class="btn" disabled>Kirim Komentar</button>
-                    </form>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="c-multi" value="100000" onchange="calculatePrice()">
+                        <div>
+                            <strong>Multi Page (+Halaman)</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">+Rp 100.000 per halaman tambahan</div>
+                        </div>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="c-anim" value="150000" onchange="calculatePrice()">
+                        <div>
+                            <strong>Advanced Animation</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">Efek partikel, scroll 3D, atau glitch</div>
+                        </div>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="c-revisi" value="50000" onchange="calculatePrice()">
+                        <div>
+                            <strong>Paket Revisi Unlimited</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">+Rp 50.000 (Revisi selama masa pengerjaan)</div>
+                        </div>
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="c-hosting" value="200000" onchange="calculatePrice()">
+                        <div>
+                            <strong>Bantuan Setup Hosting Berbayar</strong>
+                            <div style="font-size: 0.8rem; color: var(--text-muted);">+Rp 200.000 (Opsional. Jika tidak dicentang, Anda bisa pakai GitHub Pages Gratis)</div>
+                        </div>
+                    </label>
                 </div>
 
-                <!-- List Komentar -->
-                <div class="comment-list-container" id="comment-list">
-                    <!-- Komentar dummy awal -->
-                    <div class="comment-item">
-                        <div class="comment-header">
-                            <span class="comment-author">CyberUser_01</span>
-                            <span class="comment-rating">★★★★★</span>
-                        </div>
-                        <p class="comment-text">Desainnya gila sih, bener-bener kerasa nuansa sci-fi nya. Mantap XDFAA TEAM!</p>
-                    </div>
+                <!-- Price Display -->
+                <div class="price-display">
+                    <div class="discount-alert">MEMBER BARU DISKON 50%*</div>
+                    <h3>Estimasi Total</h3>
+                    <div class="total-price" id="totalPrice">Rp 150.000</div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">*Harga akhir dapat dinegosiasikan tergantung tingkat kesulitan detail.</p>
                     
-                    <div class="comment-item">
-                        <div class="comment-header">
-                            <span class="comment-author">RinaGamer</span>
-                            <span class="comment-rating">★★★★☆</span>
-                        </div>
-                        <p class="comment-text">Pelayanan ramah di Instagram, hasilnya sesuai ekspektasi. Recommended buat yang mau bikin blog pribadi.</p>
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <p class="price-note">
+                            <i class="fas fa-info-circle"></i> <strong>Catatan Penting:</strong><br>
+                            Harga di atas adalah untuk <strong>FILE DESAIN & SOURCE CODE</strong> saja.<br>
+                            File akan dikirim via Google Drive/Email.<br>
+                            Untuk hosting online, Anda bisa menggunakan <strong>GitHub Pages (Gratis)</strong> atau membayar biaya setup Rp 200.000.
+                        </p>
+                    </div>
+
+                    <a href="https://www.instagram.com/xdfaa_team.id?igsh=YmN2bXFraHF5YjM1" target="_blank" class="btn btn-filled" style="width: 100%; margin-top: 20px;">Pesan Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ (GitHub Guide) -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 50px;">
+                <h2 style="font-family: var(--font-head); font-size: 2rem;">FAQ & GitHub Pages</h2>
+            </div>
+            <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+                
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Apakah harga sudah termasuk hosting? <span>+</span></div>
+                    <div class="faq-answer">
+                        Tidak. Harga yang Anda bayarkan adalah untuk jasa pembuatan desain dan penulisan kode. Anda akan menerima file `.html`, `.css`, dan `.js`. Hosting (tempat menyimpan file agar online) adalah tanggung jawab Anda.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Bagaimana cara membuat website online gratis? <span>+</span></div>
+                    <div class="faq-answer">
+                        Anda bisa menggunakan <strong>GitHub Pages</strong>. Ini layanan hosting statis gratis dari GitHub. Cukup upload file yang kami berikan ke repository GitHub Anda, dan dalam 5 menit website Anda sudah online dengan domain `username.github.io`.
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Apa bedanya Hosting Gratis (GitHub) vs Berbayar? <span>+</span></div>
+                    <div class="faq-answer">
+                        GitHub Pages gratis dan cocok untuk portfolio, landing page, atau blog statis. Namun, jika Anda butuh fitur kompleks (database, login backend, toko online dinamis), Anda butuh hosting berbayar (VPS/Shared Hosting).
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFaq(this)">Apakah kode bisa diedit nanti? <span>+</span></div>
+                    <div class="faq-answer">
+                        Tentu bisa. Kami memberikan source code yang "Clean Code" (mudah dibaca dan dimengerti). Jika Anda belajar HTML/CSS sedikit, Anda bisa mengganti teks atau gambar sendiri dengan mudah.
                     </div>
                 </div>
 
@@ -701,121 +431,95 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="logo-container" style="justify-content: center; margin-bottom: 20px;">
-                <img src="https://z-cdn-media.chatglm.cn/files/d7d5e61e-19d5-49c7-af3f-cca3fd06043a.jpeg?auth_key=1876780341-596f9b2de70a416bab4f60df58726436-0-59bad741ca0486bde997e1295bf79e52" alt="XDFAA Logo" style="width: 40px; filter: grayscale(100%);">
-                <span class="brand-name" style="font-size: 1.2rem;">XDFAA TEAM</span>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="brand-text" style="margin-bottom: 15px; display:block;">XDFAA TEAM</div>
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">
+                        Spesialis Desain Web Frontend dan Source Code Developer. Membantu Anda memiliki tampilan website profesional tanpa biaya hosting mahal.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Menu</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Layanan</a></li>
+                        <li><a href="#pricing">Harga</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Kontak</h4>
+                    <ul>
+                        <li><a href="https://www.instagram.com/xdfaa_team.id?igsh=YmN2bXFraHF5YjM1" target="_blank">Instagram Official</a></li>
+                        <li><a href="#">Email Support</a></li>
+                    </ul>
+                </div>
             </div>
-            <p>&copy; 2023 XDFAA TEAM. All Rights Reserved.</p>
-            <a href="https://www.instagram.com/xdfaa_team.id?igsh=YmN2bXFraHF5YjM1" target="_blank" class="social-link">
-                Official Instagram: @xdfaa_team.id
-            </a>
+            <div class="text-center" style="border-top: 1px solid #1a1a1a; padding-top: 20px; color: #444; font-size: 0.8rem;">
+                &copy; 2023 XDFAA TEAM. Web Design Bureau.
+            </div>
         </div>
     </footer>
 
-    <!-- Toast Notification Element -->
-    <div id="toast">Pesan terkirim!</div>
-
     <script>
-        // --- Logic untuk Fitur Rating & Komentar ---
-
-        const ratingInputs = document.querySelectorAll('input[name="rating"]');
-        const submitBtn = document.getElementById('submit-btn');
-        const ratingText = document.getElementById('rating-text');
-        const commentForm = document.getElementById('comment-form');
-        const commentList = document.getElementById('comment-list');
-        const toast = document.getElementById("toast");
-
-        let currentRating = 0;
-
-        // Cek apakah user sudah memilih bintang
-        ratingInputs.forEach(input => {
-            input.addEventListener('change', () => {
-                currentRating = input.value;
-                submitBtn.disabled = false; // Aktifkan tombol jika sudah rating
-                ratingText.style.color = "var(--success)";
-                ratingText.textContent = `Rating terpilih: ${currentRating} Bintang`;
-            });
+        // --- Preloader ---
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('preloader').style.opacity = '0';
+                setTimeout(() => document.getElementById('preloader').remove(), 500);
+            }, 1000);
         });
 
-        // Fungsi Menampilkan Toast
-        function showToast(message) {
-            toast.textContent = message;
-            toast.className = "show";
-            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        // --- Mobile Menu ---
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
         }
 
-        // Handle Submit Komentar
-        commentForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+        // --- FAQ ---
+        function toggleFaq(el) {
+            const item = el.parentElement;
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+            if(!isActive) item.classList.add('active');
+        }
 
-            // Validasi: Wajib rating
-            if(currentRating === 0) {
-                showToast("Harap pilih bintang rating terlebih dahulu!");
-                return;
-            }
+        // --- PRICING CALCULATOR LOGIC ---
+        function calculatePrice() {
+            let base = 150000;
+            let total = base;
 
-            const nameInput = document.getElementById('user-name').value;
-            const commentInput = document.getElementById('comment-text').value;
+            // Get checkboxes
+            const multi = document.getElementById('c-multi');
+            const anim = document.getElementById('c-anim');
+            const revisi = document.getElementById('c-revisi');
+            const hosting = document.getElementById('c-hosting');
+
+            if(multi.checked) total += parseInt(multi.value);
+            if(anim.checked) total += parseInt(anim.value);
+            if(revisi.checked) total += parseInt(revisi.value);
+            if(hosting.checked) total += parseInt(hosting.value);
+
+            // Apply 50% Discount for New Member logic visualization
+            // Note: In real app, this might be complex, here we just show "Final Price"
+            // Let's assume the displayed price is the FINAL price after discount logic (or we can show original vs final).
+            // Based on prompt: "Pelanggan baru diskon 50%". 
+            // Let's make the calculator show the Price AFTER Discount for simplicity.
             
-            // Gunakan nama anonim jika kosong
-            const displayName = nameInput.trim() === "" ? "Pengunjung" : nameInput;
+            // Logic: The checkbox values are the FULL price. 
+            // If user checks "New Member" (implied always true for calculator?), we divide by 2.
+            // Let's assume the calculator shows the NORMAL price, and we add a text "Diskon 50% Member Baru" applies.
+            // OR: We can make the calculator show the DISCOUNTED price directly.
             
-            // Generate bintang visual
-            let starsVisual = '';
-            for(let i=0; i<5; i++) {
-                starsVisual += i < currentRating ? '★' : '☆';
-            }
+            // Let's show the DISCOUNTED price directly to match user request "kasih fitur diskon".
+            let finalPrice = Math.floor(total / 2);
 
-            // Buat elemen komentar baru
-            const newComment = document.createElement('div');
-            newComment.className = 'comment-item';
-            newComment.style.borderLeftColor = 'var(--success)'; // Highlight komentar baru
+            // Format Currency
+            const formatted = new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(finalPrice);
+            
+            document.getElementById('totalPrice').innerText = formatted;
+        }
 
-            // Cek apakah ada teks komentar atau hanya rating
-            const commentContent = commentInput.trim() === "" 
-                ? "<em>[Memberikan rating tanpa komentar]</em>" 
-                : commentInput;
-
-            newComment.innerHTML = `
-                <div class="comment-header">
-                    <span class="comment-author">${displayName} (Anda)</span>
-                    <span class="comment-rating">${starsVisual}</span>
-                </div>
-                <p class="comment-text">${commentContent}</p>
-                <button class="delete-btn" onclick="deleteComment(this)">Hapus Komentar</button>
-            `;
-
-            // Masukkan ke paling atas list
-            commentList.insertBefore(newComment, commentList.firstChild);
-
-            // Reset Form
-            commentForm.reset();
-            currentRating = 0;
-            submitBtn.disabled = true;
-            ratingText.style.color = "#666";
-            ratingText.textContent = "*Wajib pilih rating dulu sebelum komen";
-
-            showToast("Komentar berhasil ditambahkan!");
-        });
-
-        // Fungsi Hapus Komentar (Dipanggil dari tombol di HTML)
-        window.deleteComment = function(btn) {
-            if(confirm("Hapus komentar ini?")) {
-                const commentItem = btn.closest('.comment-item');
-                commentItem.remove();
-                showToast("Komentar dihapus.");
-            }
-        };
-
-        // Smooth Scroll untuk navigasi
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // Initialize Price
+        calculatePrice();
 
     </script>
 </body>
